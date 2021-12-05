@@ -5,12 +5,9 @@ from teacher.models import *
 class TeacherSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     user_id = serializers.CharField(max_length=26)
-    name = serializers.CharField(max_length=26)
-    Date_Of_Birth = serializers.DateTimeField(required=True)
-    age = serializers.IntegerField()
-    gender = serializers.ChoiceField(choices=genders, required=True)
-    role = serializers.ChoiceField(choices=roles,required=True)
-
+    Tid = serializers.CharField(max_length=26)
+    D_O_E = serializers.DateTimeField(required=True)
+    Department = serializers.ChoiceField(max_length=50, choices=Deps,required=True)
 
     def create(self, validated_data):
         """
@@ -23,11 +20,9 @@ class TeacherSerializer(serializers.Serializer):
         Update and return an existing `Snippet` instance, given the validated data.
         """
         instance.user_id = validated_data.get('user_id', instance.user_id)
-        instance.name = validated_data.get('name', instance.name)
-        instance.Date_Of_Birth = validated_data.get('Date_Of_Birth', instance.Date_Of_Birth)
-        instance.age = validated_data.get('age', instance.age)
-        instance.gender = validated_data.get('gender', instance.gender)
-        instance.role = validated_data.get('role', instance.role)
+        instance.Tid = validated_data.get('Tid', instance.Tid)
+        instance.D_O_E = validated_data.get('D_O_E', instance.D_O_E)
+        instance.Department = validated_data.get('Department', instance.Department)
         instance.save()
         return instance
 

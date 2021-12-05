@@ -20,9 +20,9 @@ class StudentSerializer(serializers.Serializer):
         Update and return an existing `Snippet` instance, given the validated data.
         """
         instance.user_id = validated_data.get('user_id', instance.user_id)
-        instance.Sid = validated_data.get('Sid', instance.name)
-        instance.Class = validated_data.get('Class', instance.age)
-        instance.Dormitory = validated_data.get('Dormitory', instance.gender)
+        instance.Sid = validated_data.get('Sid', instance.Sid)
+        instance.Class = validated_data.get('Class', instance.Class)
+        instance.Dormitory = validated_data.get('Dormitory', instance.Dormitory)
         instance.save()
         return instance
 
