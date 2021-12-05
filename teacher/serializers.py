@@ -7,7 +7,7 @@ class TeacherSerializer(serializers.Serializer):
     user_id = serializers.CharField(max_length=26)
     Tid = serializers.CharField(max_length=26)
     D_O_E = serializers.DateTimeField(required=True)
-    Department = serializers.ChoiceField(max_length=50, choices=Deps,required=True)
+    Department = serializers.ChoiceField(choices=Deps,required=True)
 
     def create(self, validated_data):
         """

@@ -13,7 +13,7 @@ genders = (
 
 # Create your models here.
 class Users(models.Model):
-    user_id= models.CharField(max_length=26)
+    user_id= models.CharField(max_length=26, unique=True)
     name= models.CharField(max_length=26)
     Date_Of_Birth= models.DateTimeField()
     age= models.IntegerField()
