@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from staff.models import *
+from teacher.models import *
 
 
-class StaffSerializer(serializers.Serializer):
+class TeacherSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     user_id = serializers.CharField(max_length=26)
     name = serializers.CharField(max_length=26)
@@ -16,7 +16,7 @@ class StaffSerializer(serializers.Serializer):
         """
         Create and return a new `Snippet` instance, given the validated data.
         """
-        return Users.objects.create(**validated_data)
+        return Teachers.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         """

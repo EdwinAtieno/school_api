@@ -3,5 +3,5 @@ from student import views
 
 urlpatterns = [
     path('', views.student_list),
-    path('user/<int:pk>/', views.student_detail),
+    path('teacher/<int:pk>/', views.student_detail),
 ]

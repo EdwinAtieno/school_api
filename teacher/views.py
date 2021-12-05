@@ -2,22 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from staff.serializers import StaffSerializer
-from staff.models import Users
+from teacher.serializers import TeacherSerializer
+from teacher.models import Teachers
 
 @csrf_exempt
-def user_list(request):
+def teacher_list(request):
     """
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        users = Users.objects.all()
-        serializer = StaffSerializer(users, many=True)
+        users = Teachers.objects.all()
+        serializer = TeacherSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = StaffSerializer(data=data)
+        serializer = TeacherSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse("serializer.data", status=201)
@@ -25,22 +25,22 @@ def user_list(request):
 
 
 @csrf_exempt
-def user_detail(request, pk):
+def teacher_detail(request, pk):
     """
     Retrieve, update or delete a code snippet.
     """
     try:
-        user = Users.objects.get(pk=pk)
-    except Users.DoesNotExist:
+        user = Teachers.objects.get(pk=pk)
+    except Teachers.DoesNotExist:
         return HttpResponse(status=404)
 
     if request.method == 'GET':
-        serializer = StaffSerializer(user)
+        serializer = TeacherSerializer(user)
         return JsonResponse(serializer.data)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = StaffSerializer(user, data=data)
+        serializer = TeacherSerializer(user, data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)

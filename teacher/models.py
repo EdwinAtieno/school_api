@@ -12,7 +12,7 @@ genders = (
 
 
 # Create your models here.
-class Users(models.Model):
+class Teachers(models.Model):
     user_id= models.CharField(max_length=26)
     name= models.CharField(max_length=26)
     Date_Of_Birth= models.DateTimeField()
